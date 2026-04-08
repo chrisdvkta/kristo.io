@@ -1,4 +1,4 @@
-baseURL = 'https://example.org/'
+baseURL='https://krist0.netlify.app/'
 languageCode = 'en-us'
 title = 'Kristo'
 theme = "risotto"
