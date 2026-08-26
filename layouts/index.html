@@ -1,0 +1,25 @@
+{{ define "main" }}
+    <section class="intro-block" aria-labelledby="whoami-heading">
+        <p class="command-line" id="whoami-heading">$ whoami</p>
+        <h1>{{ .Site.Title }}</h1>
+        <div class="intro-block__copy">
+            {{ with .Content }}
+                {{ . }}
+            {{ else }}
+                <p>I write about technology, systems, programming, and things I am still trying to understand.</p>
+            {{ end }}
+        </div>
+    </section>
+
+    <section class="post-list" aria-labelledby="recent-posts-heading">
+        <p class="command-line" id="recent-posts-heading">$ ls -lt ~/posts</p>
+        {{ $posts := where (where site.RegularPages "Section" "posts") "Title" "ne" "" }}
+        {{ if $posts }}
+            {{ range first 8 $posts.ByDate.Reverse }}
+                {{ partial "post-row.html" . }}
+            {{ end }}
+        {{ else }}
+            <p class="empty-output">no published posts found</p>
+        {{ end }}
+    </section>
+{{ end }}

@@ -1,0 +1,32 @@
+{{ define "main" }}
+    <article class="article">
+        <header class="article__header">
+            <p class="command-line">$ cat ~/{{ with .File }}{{ .Path }}{{ else }}{{ .Title | urlize }}.md{{ end }}</p>
+            <h1>{{ .Title | markdownify }}</h1>
+            {{ if or (.Date) (.Params.author) }}
+                <dl class="article-meta">
+                    {{ with .Date }}
+                        <dt>published</dt>
+                        <dd><time datetime="{{ .Format "2006-01-02" }}">{{ .Format "2006-01-02" }}</time></dd>
+                    {{ end }}
+                    <dt>status</dt>
+                    <dd>{{ if .Draft }}draft{{ else }}published{{ end }}</dd>
+                    {{ with .Params.author }}
+                        <dt>author</dt>
+                        <dd>{{ . }}</dd>
+                    {{ end }}
+                    {{ with .Params.listening }}
+                        <dt>listening</dt>
+                        <dd>{{ . }}</dd>
+                    {{ end }}
+                    <dt>reading</dt>
+                    <dd>{{ .ReadingTime }} min</dd>
+                </dl>
+            {{ end }}
+        </header>
+
+        <div class="article__body">
+            {{ .Content }}
+        </div>
+    </article>
+{{ end }}

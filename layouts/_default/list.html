@@ -1,0 +1,18 @@
+{{ define "main" }}
+    <header class="archive-header">
+        <p class="command-line">$ find ~/posts -type f</p>
+        <h1>{{ .Title | markdownify }}</h1>
+        {{ with .Content }}<div class="archive-header__copy">{{ . }}</div>{{ end }}
+    </header>
+
+    <section class="post-list" aria-label="{{ .Title }} posts">
+        {{ $pages := where .Pages.ByDate.Reverse "Title" "ne" "" }}
+        {{ if $pages }}
+            {{ range $pages }}
+                {{ partial "post-row.html" . }}
+            {{ end }}
+        {{ else }}
+            <p class="empty-output">no published posts found</p>
+        {{ end }}
+    </section>
+{{ end }}

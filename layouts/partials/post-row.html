@@ -1,0 +1,12 @@
+<article class="post-row">
+    <a class="post-row__title" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+    <time class="post-row__date" datetime="{{ .Date.Format "2006-01-02" }}">[{{ .Date.Format "2006-01-02" }}]</time>
+    {{ with .Params.description }}
+        <p class="post-row__summary">{{ . }}</p>
+    {{ else }}
+        {{ with .Summary }}<p class="post-row__summary">{{ . | plainify | truncate 140 }}</p>{{ end }}
+    {{ end }}
+    <p class="post-row__meta">
+        {{ .ReadingTime }} min read{{ with .Params.tags }} / tags: {{ delimit . ", " }}{{ end }}
+    </p>
+</article>

@@ -1,0 +1,17 @@
+{{ with site.Data.now_playing }}
+    <section class="footer-song" aria-label="Currently listening">
+        <p class="footer-song__command">$ tail -1 ~/listening.log</p>
+        <p class="footer-song__track">
+            <span class="footer-song__meter" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="footer-song__label">now playing</span>
+            {{ if .url }}
+                <a href="{{ .url }}" class="footer-song__link">{{ .artist }} - {{ .title }}</a>
+            {{ else }}
+                <span class="footer-song__link">{{ .artist }} - {{ .title }}</span>
+            {{ end }}
+            {{ with .logged }}<time class="footer-song__date" datetime="{{ . }}">[{{ . }}]</time>{{ end }}
+        </p>
+    </section>
+{{ end }}
+<p class="site-footer__status">[session closed]</p>
+<p>{{ .Site.Copyright | markdownify }} <span aria-hidden="true">|</span> built with markdown</p>

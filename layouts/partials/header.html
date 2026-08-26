@@ -1,0 +1,18 @@
+<a class="skip-link" href="#main">skip to content</a>
+<div class="terminal-prompt" aria-label="{{ .Site.Title }} terminal prompt">
+    <a class="terminal-prompt__site" href="{{ "/" | relURL }}">kristo@site</a><span class="terminal-prompt__path">:~$</span><span class="terminal-prompt__cursor" aria-hidden="true"></span>
+</div>
+
+<nav class="main-nav" aria-label="Main navigation">
+    <ul>
+        {{ $currentPage := . }}
+        {{ range .Site.Menus.main }}
+            {{ $active := or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) (eq ($currentPage.Permalink) (.URL | absLangURL)) }}
+            <li>
+                <a class="main-nav__link{{ if $active }} is-active{{ end }}" href="{{ .URL | relURL }}"{{ if $active }} aria-current="page"{{ end }}>{{ .Name }}</a>
+            </li>
+        {{ end }}
+    </ul>
+</nav>
+
+<p class="session-status"><span class="session-status__dot" aria-hidden="true"></span>status: available</p>
