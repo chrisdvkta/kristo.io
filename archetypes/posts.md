@@ -4,7 +4,11 @@ draft = true
 title = '{{ replace .File.ContentBaseName "-" " " | title }}'
 description = ''
 tags = []
-listening = ''
+
+[listening]
+artist = ''
+title = ''
+url = ''
 +++
 
 Write the post here.

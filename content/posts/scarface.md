@@ -3,6 +3,11 @@ date = '2026-08-26T23:40:26+05:45'
 draft = false
 title = 'My Thoughts After Scarface'
 description = 'Notes after watching Scarface.'
+
+[listening]
+artist = 'smush'
+title = 'goodnight moon'
+url = 'https://open.spotify.com/track/1zgN8cRDdUx6bM7V9P1APj?si=_iM-ms_CR5WbA85UUYZKWA&utm_source=copy_link'
 +++
 
 One of the best action thrillers I've watched so far.

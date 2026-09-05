@@ -82,28 +82,40 @@ body {
     color: var(--terminal-amber);
 }
 
-.footer-song {
+.listening-log {
     display: grid;
     gap: 6px;
+}
+
+.footer-song {
     margin-bottom: 16px;
     padding: 12px 0 14px;
     border-bottom: 1px solid var(--terminal-border);
 }
 
-.footer-song__command {
+.article-song {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid var(--terminal-border);
+    background: var(--terminal-surface);
+}
+
+.listening-log__command {
+    margin: 0;
     color: var(--terminal-green);
     font-size: 13px;
     font-weight: 600;
 }
 
-.footer-song__track {
+.listening-log__track {
     display: flex;
     flex-wrap: wrap;
     gap: 6px 10px;
     align-items: baseline;
+    margin: 0;
 }
 
-.footer-song__meter {
+.listening-log__meter {
     display: inline-flex;
     width: 18px;
     height: 16px;
@@ -112,7 +124,7 @@ body {
     padding-bottom: 2px;
 }
 
-.footer-song__meter span {
+.listening-log__meter span {
     width: 3px;
     height: 7px;
     border: 1px solid var(--terminal-green);
@@ -120,12 +132,12 @@ body {
     animation: listening-meter 1.45s steps(4, end) infinite;
 }
 
-.footer-song__meter span:nth-child(2) {
+.listening-log__meter span:nth-child(2) {
     height: 12px;
     animation-delay: 0.18s;
 }
 
-.footer-song__meter span:nth-child(3) {
+.listening-log__meter span:nth-child(3) {
     height: 9px;
     animation-delay: 0.34s;
 }
@@ -142,25 +154,25 @@ body {
     }
 }
 
-.footer-song__label {
+.listening-log__label {
     color: var(--terminal-muted);
 }
 
-.footer-song__label::after {
+.listening-log__label::after {
     content: ":";
 }
 
-.footer-song__link {
+.listening-log__link {
     color: var(--terminal-text);
     font-weight: 650;
     text-decoration: none;
 }
 
-a.footer-song__link:hover {
+a.listening-log__link:hover {
     color: var(--terminal-amber);
 }
 
-.footer-song__date {
+.listening-log__date {
     color: var(--terminal-amber);
     font-variant-numeric: tabular-nums;
 }
@@ -631,7 +643,7 @@ mark {
         transition-duration: 0.001ms !important;
     }
 
-    .footer-song__meter span {
+    .listening-log__meter span {
         transform: none;
         opacity: 0.8;
     }

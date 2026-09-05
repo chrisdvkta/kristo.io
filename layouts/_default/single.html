@@ -15,13 +15,12 @@
                         <dt>author</dt>
                         <dd>{{ . }}</dd>
                     {{ end }}
-                    {{ with .Params.listening }}
-                        <dt>listening</dt>
-                        <dd>{{ . }}</dd>
-                    {{ end }}
                     <dt>reading</dt>
                     <dd>{{ .ReadingTime }} min</dd>
                 </dl>
+            {{ end }}
+            {{ with .Params.listening }}
+                {{ partial "listening.html" (dict "song" . "class" "article-song" "label" "wrote this to" "command" (printf "$ grep listening ~/%s" $.File.Path)) }}
             {{ end }}
         </header>
 

@@ -1,0 +1,19 @@
+{{ $song := .song }}
+{{ $class := .class | default "" }}
+{{ $command := .command | default "$ tail -1 ~/listening.log" }}
+{{ $label := .label | default "now playing" }}
+{{ if and $song.artist $song.title }}
+    <section class="listening-log {{ $class }}" aria-label="{{ $label }}">
+        <p class="listening-log__command">{{ $command }}</p>
+        <p class="listening-log__track">
+            <span class="listening-log__meter" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="listening-log__label">{{ $label }}</span>
+            {{ if $song.url }}
+                <a href="{{ $song.url }}" class="listening-log__link">{{ $song.artist }} - {{ $song.title }}</a>
+            {{ else }}
+                <span class="listening-log__link">{{ $song.artist }} - {{ $song.title }}</span>
+            {{ end }}
+            {{ with $song.logged }}<time class="listening-log__date" datetime="{{ . }}">[{{ . }}]</time>{{ end }}
+        </p>
+    </section>
+{{ end }}
