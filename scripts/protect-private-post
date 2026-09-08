@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+if [[ $# -ne 1 || "$1" == */* || "$1" != *.md ]]; then
+  echo "Usage: $0 post-name.md" >&2
+  exit 2
+fi
+
+source_file="content/posts/$1"
+encrypted_file=".private/$1.gpg"
+
+if [[ ! -f "$source_file" ]]; then
+  echo "Not found: $source_file" >&2
+  exit 1
+fi
+
+if [[ -e "$encrypted_file" ]]; then
+  echo "Already exists: $encrypted_file" >&2
+  exit 1
+fi
+
+mkdir -p .private
+gpg --symmetric --cipher-algo AES256 --output "$encrypted_file" "$source_file"
+rm "$source_file"
+
+echo "Encrypted copy saved to $encrypted_file; the public post source was removed."
