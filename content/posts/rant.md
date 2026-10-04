@@ -1,6 +1,6 @@
 +++
 date = '2026-10-04T13:42:39+05:45'
-draft = true
+draft = false
 title = 'Rant'
 description = ''
 tags = []
